@@ -1,0 +1,214 @@
+/* src/pages/HistoryPage.css - Applying Card Styles */
+
+.history-container {
+    padding-bottom: 20px;
+}
+
+/* --- Time Range Buttons --- */
+.time-range-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+.time-range-selector button {
+    padding: 8px 16px;
+    border: 1px solid var(--border-standard); /* Use variable */
+    background-color: var(--card-bg); /* Use variable */
+    color: var(--text-heading); /* Use variable */
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    font-weight: var(--font-weight-medium);
+}
+.time-range-selector button:hover {
+    background-color: var(--snow);
+    border-color: var(--text-muted);
+}
+.time-range-selector button.active {
+    background: var(--gradient-signature); /* Use gradient for active */
+    color: white;
+    border-color: transparent; /* Remove border for gradient button */
+    font-weight: var(--font-weight-bold);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Alerts Section (Card Style) --- */
+.alerts-section {
+    /* Alert-specific colors */
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    /* Card styles */
+    padding: 15px 20px;
+    border-radius: 12px; /* Card rounding */
+    margin-bottom: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card shadow */
+}
+.alerts-section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #664d03;
+    text-align: left;
+}
+.alerts-section ul { margin: 0; padding-left: 20px; }
+.alerts-section li { margin-bottom: 8px; line-height: 1.5; font-size: 0.95rem; }
+.alerts-section li:last-child { margin-bottom: 0; }
+
+
+/* --- Chart Area (Card Style) --- */
+.chart-area {
+    margin-bottom: 25px; /* Consistent margin */
+    height: 300px;
+    position: relative;
+    background-color: var(--card-bg); /* Card */
+    padding: 15px;
+    border-radius: 12px; /* Card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card */
+    border: 1px solid var(--border-light); /* Card */
+}
+
+/* --- Summary Stats (Card Style) --- */
+.summary-stats {
+    border-top: none; /* Remove separator, card provides it */
+    padding: 20px;
+    margin-top: 0; /* Remove if it follows another card */
+    margin-bottom: 25px; /* Consistent margin */
+    background-color: var(--card-bg); /* Card */
+    border-radius: 12px; /* Card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card */
+    border: 1px solid var(--border-light); /* Card */
+}
+.summary-stats h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-heading);
+    text-align: center;
+    margin-top: 0;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px 15px;
+}
+.summary-stats p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background-color: transparent; /* Removed inner background */
+    padding: 5px 0;
+    border-radius: 0;
+    border: none;
+}
+.summary-stats p strong {
+    color: var(--mint); /* Use theme color */
+    float: right;
+    font-weight: var(--font-weight-bold);
+}
+
+/* --- Walk Test History Section --- */
+.walk-test-history-section {
+    margin-top: 0; /* Remove top margin if following other cards */
+    padding-top: 0;
+    border-top: none; /* Remove separator, card provides it */
+}
+.walk-test-history-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-heading);
+    text-align: center;
+}
+
+/* Table Container (Card Style) */
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 25px; /* Consistent margin */
+    background-color: var(--card-bg); /* Card */
+    border-radius: 12px; /* Card */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card */
+    padding: 10px; /* Padding around table */
+    border: 1px solid var(--border-light); /* Card */
+}
+
+.walk-test-history-section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    border-radius: 0; /* Remove inner radius */
+    overflow: hidden;
+    box-shadow: none; /* Remove inner shadow */
+    border: none; /* Remove inner border */
+}
+
+.walk-test-history-section th,
+.walk-test-history-section td {
+    border: 1px solid var(--border-light); /* Use light border */
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: middle;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.walk-test-history-section th {
+    background-color: var(--snow); /* Use snow background for header */
+    font-weight: 600;
+    color: var(--text-heading);
+    white-space: nowrap;
+    border-bottom-width: 2px;
+    border-bottom-color: var(--border-standard); /* Standard border */
+    text-align: center;
+    vertical-align: middle;
+    padding: 6px 4px;
+}
+
+/* SpO2 Conditional Formatting Colors */
+.walk-test-history-section td.spo2-low { background-color: #f8d7da; color: #842029; font-weight: 500; }
+.walk-test-history-section td.spo2-caution { background-color: #fff3cd; color: #856404; }
+.walk-test-history-section td.spo2-normal { background-color: #d1e7dd; color: #0f5132; }
+
+/* Desaturation Indicator Styles */
+.desat-indicator { font-weight: bold; font-size: 1.1em; padding: 0 2px; margin-left: 5px; }
+.desat-indicator.desaturation-significant { color: var(--coral); }
+.desat-indicator.desaturation-mild { color: #ffc107; }
+.desat-indicator.desaturation-improved { color: var(--mint); }
+
+/* Stacked pulse value style */
+.walk-test-history-section td .pulse-value { font-size: 0.85em; color: #555; display: inline-block; margin-top: 2px; }
+
+ /* No Data Message Style */
+.no-data-message { /* General style for all no-data messages */
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px; /* Consistent rounding */
+    font-size: 1rem;
+    color: var(--text-muted);
+    background-color: var(--snow); /* Light background */
+    border: 1px solid var(--border-light);
+}
+/* Specific style if needed */
+ .walk-test-history-section .no-data-message {
+    /* Inherits general .no-data-message, add specifics if needed */
+    margin-top: 0; /* No extra top margin inside this section */
+    background-color: transparent; /* Don't need background if section has card */
+    border: none;
+ }
+
+/* --- Export Section --- */
+.export-section {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light); /* Use variable */
+  text-align: center;
+}
+
+/* Export Button uses btn-secondary now defined in App.css */
+.export-error {
+  margin-top: 10px;
+  text-align: center;
+}

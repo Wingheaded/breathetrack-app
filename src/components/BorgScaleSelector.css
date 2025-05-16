@@ -1,0 +1,57 @@
+/* src/components/BorgScaleSelector.css */
+.borg-scale-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 4px; /* Small spacing between buttons */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 8px; /* Match form input rounding */
+    padding: 6px; /* Padding inside the container */
+    background-color: #ffffff; /* White background */
+  }
+  
+  .borg-level-button {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    width: 100%; /* Full width */
+    padding: 8px 12px; /* Padding inside the button */
+    border: 1px solid transparent; /* Transparent border initially */
+    background-color: #ffffff; /* White background */
+    color: #495057; /* Dark grey text */
+    text-align: left; /* Align text to the left */
+    cursor: pointer;
+    border-radius: 6px; /* Slightly rounded corners for buttons */
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95rem; /* Match form input font size */
+    line-height: 1.4; /* Improve readability */
+  }
+  
+  /* Style for when hovering over a button */
+  .borg-level-button:hover {
+    background-color: #e9ecef; /* Light grey background on hover */
+  }
+  
+  /* Style for the currently selected button */
+  .borg-level-button.selected {
+    background-color: #cfe2ff; /* Light blue background (match Bootstrap's light blue) */
+    border-color: #a6caff; /* Slightly darker blue border */
+    color: #004085; /* Darker blue text */
+    font-weight: 600; /* Make selected item bold */
+  }
+  
+  /* Style for the number value (0-10) */
+  .borg-value {
+    font-weight: bold; /* Make number bold */
+    margin-right: 15px; /* Space between number and label */
+    min-width: 20px; /* Ensure numbers align nicely */
+    text-align: right; /* Right-align the number */
+    color: #0d6efd; /* Use primary blue for the number */
+  }
+  /* Slightly darker blue for the selected number */
+  .borg-level-button.selected .borg-value {
+      color: #004085;
+  }
+  
+  /* Style for the text label */
+  .borg-label {
+    flex-grow: 1; /* Allow label to take remaining space */
+  }

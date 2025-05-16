@@ -1,0 +1,90 @@
+/* src/pages/WalkTestPage.css */
+
+.walk-test-container {
+    padding-bottom: 20px;
+  }
+  
+  .instructions-section,
+  .pre-test-section,
+  .timer-section,
+  .midpoint-log-section, /* Add styles for other sections later */
+  .finished-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  .instructions-section h2,
+  .pre-test-section h2,
+  .timer-section h2,
+  .midpoint-log-section h2,
+  .finished-section h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #495057;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  
+  .instructions-section ul {
+    padding-left: 20px;
+    margin-top: 10px;
+  }
+  .instructions-section li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .instructions-section strong {
+      font-weight: 600;
+  }
+  .instructions-section p:last-of-type strong {
+      color: #dc3545; /* Red for important warning */
+  }
+  
+  
+  /* Specific styles for form sections */
+  .form-section {
+      /* Uses .form-group from App.css */
+  }
+  
+  
+  /* Timer Display */
+  .timer-section {
+    text-align: center;
+    background-color: #e9ecef; /* Light grey background */
+    border-color: #dee2e6;
+  }
+  .timer-display {
+    font-size: 4rem; /* Large timer font */
+    font-weight: 300; /* Lighter font weight */
+    color: #343a40;
+    margin-bottom: 20px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums; /* Keep numbers evenly spaced */
+  }
+  
+  .timer-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px; /* Space between buttons */
+      flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  }
+  
+  .timer-controls .btn {
+      width: auto; /* Don't force full width */
+      min-width: 120px; /* Minimum width */
+      padding: 10px 20px; /* Adjust padding */
+  }
+  
+  /* Danger button style */
+  .btn.btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+  }
+  .btn.btn-danger:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+  }
