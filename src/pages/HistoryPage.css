@@ -2,6 +2,8 @@
 
 .history-container {
     padding-bottom: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* --- Time Range Buttons --- */
@@ -10,42 +12,43 @@
     justify-content: center;
     gap: 10px;
     margin-bottom: 25px;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    padding: 0 10px; /* Add some padding on small screens */
 }
 .time-range-selector button {
     padding: 8px 16px;
-    border: 1px solid var(--border-standard); /* Use variable */
-    background-color: var(--card-bg); /* Use variable */
-    color: var(--text-heading); /* Use variable */
+    border: 1px solid var(--border-standard);
+    background-color: var(--card-bg);
+    color: var(--text-heading);
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     font-size: 0.9rem;
     line-height: 1.4;
     font-weight: var(--font-weight-medium);
+    min-width: 80px; /* Ensure buttons have a minimum width */
 }
 .time-range-selector button:hover {
     background-color: var(--snow);
     border-color: var(--text-muted);
 }
 .time-range-selector button.active {
-    background: var(--gradient-signature); /* Use gradient for active */
+    background: var(--gradient-signature);
     color: white;
-    border-color: transparent; /* Remove border for gradient button */
+    border-color: transparent;
     font-weight: var(--font-weight-bold);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Alerts Section (Card Style) --- */
 .alerts-section {
-    /* Alert-specific colors */
     background-color: #fff3cd;
     border: 1px solid #ffeeba;
     color: #856404;
-    /* Card styles */
     padding: 15px 20px;
-    border-radius: 12px; /* Card rounding */
-    margin-bottom: 25px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card shadow */
+    border-radius: 12px;
+    margin: 0 10px 25px 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
 .alerts-section h2 {
     margin-top: 0;
@@ -58,29 +61,27 @@
 .alerts-section li { margin-bottom: 8px; line-height: 1.5; font-size: 0.95rem; }
 .alerts-section li:last-child { margin-bottom: 0; }
 
-
 /* --- Chart Area (Card Style) --- */
 .chart-area {
-    margin-bottom: 25px; /* Consistent margin */
+    margin: 0 10px 25px 10px;
     height: 300px;
     position: relative;
-    background-color: var(--card-bg); /* Card */
+    background-color: var(--card-bg);
     padding: 15px;
-    border-radius: 12px; /* Card */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card */
-    border: 1px solid var(--border-light); /* Card */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
 }
 
 /* --- Summary Stats (Card Style) --- */
 .summary-stats {
-    border-top: none; /* Remove separator, card provides it */
+    border-top: none;
     padding: 20px;
-    margin-top: 0; /* Remove if it follows another card */
-    margin-bottom: 25px; /* Consistent margin */
-    background-color: var(--card-bg); /* Card */
-    border-radius: 12px; /* Card */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card */
-    border: 1px solid var(--border-light); /* Card */
+    margin: 0 10px 25px 10px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
 }
 .summary-stats h2 {
     font-size: 1.2rem;
@@ -91,29 +92,32 @@
 }
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 10px 15px;
 }
 .summary-stats p {
     margin-bottom: 5px;
     font-size: 0.95rem;
     color: var(--ink);
-    background-color: transparent; /* Removed inner background */
+    background-color: transparent;
     padding: 5px 0;
     border-radius: 0;
     border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .summary-stats p strong {
-    color: var(--mint); /* Use theme color */
-    float: right;
+    color: var(--mint);
     font-weight: var(--font-weight-bold);
 }
 
 /* --- Walk Test History Section --- */
 .walk-test-history-section {
-    margin-top: 0; /* Remove top margin if following other cards */
+    margin: 0 10px;
     padding-top: 0;
-    border-top: none; /* Remove separator, card provides it */
+    border-top: none;
 }
 .walk-test-history-section h2 {
     font-size: 1.2rem;
@@ -125,45 +129,51 @@
 /* Table Container (Card Style) */
 .table-container {
     overflow-x: auto;
-    width: 100%;
-    margin-bottom: 25px; /* Consistent margin */
-    background-color: var(--card-bg); /* Card */
-    border-radius: 12px; /* Card */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05); /* Card */
-    padding: 10px; /* Padding around table */
-    border: 1px solid var(--border-light); /* Card */
+    width: calc(100% - 20px);
+    margin: 0 10px 25px 10px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border: 1px solid var(--border-light);
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .walk-test-history-section table {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.88rem;
-    border-radius: 0; /* Remove inner radius */
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: none; /* Remove inner shadow */
-    border: none; /* Remove inner border */
+    box-shadow: none;
+    border: none;
+    min-width: 600px; /* Ensure table doesn't get too squeezed */
 }
 
 .walk-test-history-section th,
 .walk-test-history-section td {
-    border: 1px solid var(--border-light); /* Use light border */
+    border: 1px solid var(--border-light);
     padding: 6px 8px;
     text-align: left;
     vertical-align: middle;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    min-width: 70px; /* Minimum width for columns */
 }
 
 .walk-test-history-section th {
-    background-color: var(--snow); /* Use snow background for header */
+    background-color: var(--snow);
     font-weight: 600;
     color: var(--text-heading);
     white-space: nowrap;
     border-bottom-width: 2px;
-    border-bottom-color: var(--border-standard); /* Standard border */
+    border-bottom-color: var(--border-standard);
     text-align: center;
     vertical-align: middle;
     padding: 6px 4px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 /* SpO2 Conditional Formatting Colors */
@@ -178,37 +188,64 @@
 .desat-indicator.desaturation-improved { color: var(--mint); }
 
 /* Stacked pulse value style */
-.walk-test-history-section td .pulse-value { font-size: 0.85em; color: #555; display: inline-block; margin-top: 2px; }
+.walk-test-history-section td .pulse-value { 
+    font-size: 0.85em; 
+    color: #555; 
+    display: inline-block; 
+    margin-top: 2px; 
+}
 
- /* No Data Message Style */
-.no-data-message { /* General style for all no-data messages */
+/* No Data Message Style */
+.no-data-message {
     text-align: center;
     padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px; /* Consistent rounding */
+    margin: 20px 10px;
+    border-radius: 8px;
     font-size: 1rem;
     color: var(--text-muted);
-    background-color: var(--snow); /* Light background */
+    background-color: var(--snow);
     border: 1px solid var(--border-light);
 }
-/* Specific style if needed */
- .walk-test-history-section .no-data-message {
-    /* Inherits general .no-data-message, add specifics if needed */
-    margin-top: 0; /* No extra top margin inside this section */
-    background-color: transparent; /* Don't need background if section has card */
+
+.walk-test-history-section .no-data-message {
+    margin-top: 0;
+    background-color: transparent;
     border: none;
- }
+}
 
 /* --- Export Section --- */
 .export-section {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid var(--border-light); /* Use variable */
-  text-align: center;
+    margin: 30px 10px 0 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    text-align: center;
 }
 
 /* Export Button uses btn-secondary now defined in App.css */
 .export-error {
-  margin-top: 10px;
-  text-align: center;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .history-container h1 {
+        font-size: 1.5rem;
+        margin: 10px 0 15px 10px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-stats h2,
+    .walk-test-history-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .walk-test-history-section td,
+    .walk-test-history-section th {
+        padding: 4px 6px;
+        font-size: 0.8rem;
+    }
 }
