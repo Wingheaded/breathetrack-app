@@ -1,57 +1,84 @@
-// src/App.tsx - Add Navigation Link for WalkTestPage
-// Import tools for routing (switching pages)
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
-// Import the page components
+import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { supabase } from './lib/supabase';
 import LogEntryPage from './pages/LogEntryPage';
 import HistoryPage from './pages/HistoryPage';
-import WalkTestPage from './pages/WalkTestPage'; // Import should already be here
-// Import the main CSS file
+import WalkTestPage from './pages/WalkTestPage';
+import AuthPage from './pages/AuthPage';
 import './App.css';
 
 function App() {
+  const [session, setSession] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(!!session);
+      setLoading(false);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(!!session);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    // Router wraps the whole app to enable navigation
     <Router>
-      {/* div to contain the overall app layout */}
       <div className="app-container">
-        {/* Main content area where pages will be displayed */}
         <main className="main-content">
-          {/* Routes defines where to navigate */}
           <Routes>
-            {/* When URL is '/', show LogEntryPage */}
-            <Route path="/" element={<LogEntryPage />} />
-            {/* When URL is '/history', show HistoryPage */}
-            <Route path="/history" element={<HistoryPage />} />
-            {/* When URL is '/walk-test', show WalkTestPage */}
-            <Route path="/walk-test" element={<WalkTestPage />} /> {/* Route should already be here */}
+            <Route
+              path="/auth"
+              element={session ? <Navigate to="/" replace /> : <AuthPage />}
+            />
+            <Route
+              path="/"
+              element={session ? <LogEntryPage /> : <Navigate to="/auth" replace />}
+            />
+            <Route
+              path="/history"
+              element={session ? <HistoryPage /> : <Navigate to="/auth" replace />}
+            />
+            <Route
+              path="/walk-test"
+              element={session ? <WalkTestPage /> : <Navigate to="/auth" replace />}
+            />
           </Routes>
         </main>
 
-        {/* Bottom navigation bar - ADD THE LINK HERE */}
-        <nav className="bottom-nav">
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            Log Entry
-          </NavLink>
-          <NavLink
-            to="/history"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            History
-          </NavLink>
-          {/* *** ADD THIS NEW NAVLINK *** */}
-          <NavLink
-            to="/walk-test"
-            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-          >
-            6MWT
-          </NavLink>
-        </nav>
+        {session && (
+          <nav className="bottom-nav">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+            >
+              Log Entry
+            </NavLink>
+            <NavLink
+              to="/history"
+              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+            >
+              History
+            </NavLink>
+            <NavLink
+              to="/walk-test"
+              className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+            >
+              6MWT
+            </NavLink>
+          </nav>
+        )}
       </div>
     </Router>
   );
 }
 
-export default App; // Make the App component available to the rest of the app
+export default App;
