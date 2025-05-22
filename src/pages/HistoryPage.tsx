@@ -18,7 +18,7 @@ const generateCsvContent = (data: LogEntry[]): string => { if (!Array.isArray(da
 const downloadCsv = (csvContent: string, filename: string) => { if (!csvContent) return; const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' }); const link = document.createElement("a"); if (link.download !== undefined) { const url = URL.createObjectURL(blob); link.setAttribute("href", url); link.setAttribute("download", filename); link.style.visibility = 'hidden'; document.body.appendChild(link); link.click(); document.body.removeChild(link); URL.revokeObjectURL(url); } else { alert("CSV Download is not supported by your browser."); } };
 
 // *** UPDATED Helper function for SpO2 cell background class names based on new table ***
-const getSpo2ClassName = (css: any,
+const getSpo2ClassName = (
     spo2: number | undefined | null,
     hasCopd: boolean | undefined | null,
     oxygenOn: boolean | undefined | null,
